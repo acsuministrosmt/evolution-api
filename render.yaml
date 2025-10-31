@@ -5,3 +5,16 @@ services:
     plan: free
     dockerComposeFilePath: ./docker-compose.yaml
     autoDeploy: true
+    envVars:
+      - key: AUTHENTICATION_API_KEY
+        value: change-me
+      - key: DATABASE_PROVIDER
+        value: postgresql
+      - key: DATABASE_URL
+        fromDatabase:
+          name: evolution-db
+          property: connectionString
+
+databases:
+  - name: evolution-db
+    plan: free
